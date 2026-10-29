@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#111111" />
+    <meta name="color-scheme" content="light" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Mikail-Zulassung50" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+    <title>Mikail-Zulassung50</title>
+    <meta
+      name="description"
+      content="Mikail-Zulassung50: Wunschkennzeichen prüfen, Zulassung und Abmeldung online in der Demo. Kein amtlicher Zulassungsdienst."
+    />
+    <meta property="og:title" content="Mikail-Zulassung50" />
+    <meta property="og:description" content="Wunschkennzeichen, Zulassung und Abmeldung — Demo-Portal." />
+    <meta property="og:type" content="website" />
+    <meta name="robots" content="index,follow" />
+    <link rel="stylesheet" href="styles.css?v=plate3" />
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="wrap masthead__inner">
+        <button type="button" class="brand brand--portal" id="btn-home">
+          <span class="brand__mark" aria-hidden="true"><i></i><i></i></span>
+          <span>
+            <strong>Mikail-Zulassung50</strong>
+            <small data-cfg="domain-label">Ikfz-online-zulassung.de · Demo</small>
+          </span>
+        </button>
+        <div class="masthead__meta">
+          <button type="button" class="linkish" id="btn-track">Status</button>
+        </div>
+      </div>
+      <nav class="mainnav" aria-label="Leistungen">
+        <div class="wrap mainnav__inner">
+          <button type="button" class="mainnav__link" data-jump="wunsch">Wunschkennzeichen</button>
+          <button type="button" class="mainnav__link" data-start="Neuzulassung" data-paket="AllInclusive">Zulassung</button>
+          <button type="button" class="mainnav__link" data-start="Abmeldung">Abmeldung</button>
+          <button type="button" class="mainnav__more" id="btn-more-nav" aria-expanded="false" aria-label="Menü">Menü</button>
+        </div>
+        <div class="wrap more-nav" id="more-nav" hidden>
+          <button type="button" data-start="Umschreibung">Umschreibung 49,90 €</button>
+          <button type="button" data-start="Kurzzeitkennzeichen">Kurzzeit 119,90 €</button>
+          <button type="button" data-start="Saisonkennzeichen">Saison 119,90 €</button>
+          <button type="button" data-page="preisliste">Preise</button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="inhalt" class="wrap app">
+      <div id="home-view" class="portal-home">
+        <p class="demo-line">Demo · kein amtlicher Dienst · Daten bleiben auf dem Gerät</p>
+        <section class="hero hero--portal" id="wunsch">
+          <h1>Wunschkennzeichen<br />Verfügbarkeit prüfen</h1>
+          <p class="hero-sub">Jetzt direkt online reservieren</p>
+          <div class="plate-tile">
+            <h2>Wunschkennzeichen</h2>
+            <p class="plate-tile__sub">Verfügbarkeit prüfen &amp; reservieren</p>
+            <form class="plate-widget" id="home-plate-form">
+              <div class="de-plate">
+                <span class="de-plate__eu" aria-hidden="true"><b>D</b></span>
+                <div class="de-plate__row">
+                  <div class="de-field is-active" data-plate-field>
+                    <label class="sr-only" for="plate-kreis">Unterscheidungszeichen</label>
+                    <input id="plate-kreis" data-part="kreis" name="kreis" maxlength="3" placeholder="B" autocomplete="off" autocapitalize="characters" spellcheck="false" />
+                    <span class="de-pointer" aria-hidden="true"></span>
+                  </div>
+                  <div class="de-seals" aria-hidden="true"><i></i><i></i></div>
+                  <div class="de-field" data-plate-field>
+                    <label class="sr-only" for="plate-letters">Erkennungsbuchstaben</label>
+                    <input id="plate-letters" data-part="letters" name="letters" maxlength="2" placeholder="AB" autocomplete="off" autocapitalize="characters" spellcheck="false" />
+                    <span class="de-pointer" aria-hidden="true"></span>
+                  </div>
+                  <div class="de-field de-field--num" data-plate-field>
+                    <label class="sr-only" for="plate-digits">Erkennungsnummer</label>
+                    <input id="plate-digits" data-part="digits" name="digits" maxlength="4" placeholder="1234" inputmode="numeric" autocomplete="off" spellcheck="false" />
+                    <span class="de-pointer" aria-hidden="true"></span>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn--check">Verfügbarkeit prüfen</button>
+            </form>
+            <p class="hint" id="home-plate-result" hidden></p>
+            <p id="home-plate-go-wrap" hidden>
+              <button type="button" class="btn btn--green" data-start="Kennzeichenreservierung">Reservierung starten</button>
+            </p>
+          </div>
+        </section>
+        <section class="offer-grid">
+          <article class="offer-card">
+            <div class="offer-card__art offer-card__art--car" aria-hidden="true"><span class="mini-car"></span></div>
+            <div class="offer-card__body">
+              <h2>KFZ Zulassung</h2>
+              <ul>
+                <li>Kein echter Behördengang</li>
+                <li>Ablauf in der Demo sofort</li>
+                <li>Fotos, Ident und Zahlung nur simuliert</li>
+                <li>100 % lokal auf diesem Gerät</li>
+              </ul>
+              <button type="button" class="btn btn--green" data-start="Neuzulassung" data-paket="AllInclusive">Zulassung starten</button>
+            </div>
+          </article>
+        </section>
+        <section>
+          <h2 class="section-title section-title--lg">Der Ablauf ist sehr einfach</h2>
+          <ol class="how how--four">
+            <li><strong>1. Wunschkennzeichen</strong><span>Kombination eintragen und in der Demo prüfen.</span></li>
+            <li><strong>2. Reservierung</strong><span>Auftrag mit Fotos und Ident ausfüllen.</span></li>
+            <li><strong>3. Lieferung</strong><span>Versand oder Abholung nur als Darstellung.</span></li>
+            <li><strong>4. Zulassung</strong><span>Neuzulassung, Umschreibung oder Abmeldung im Wizard.</span></li>
+          </ol>
+        </section>
+        <section id="preise">
+          <h2 class="section-title section-title--lg">Unsere Preise</h2>
+          <p class="hint">Brutto inkl. 19 % MwSt. Behördengebühren nicht enthalten. Nichts wird abgebucht.</p>
+          <div class="price-cards">
+            <article class="price-card">
+              <h3>KFZ Zulassung</h3>
+              <p class="price-card__sum">129,90 €</p>
+              <p>All-Inclusive mit Schildern · 15 Minuten in der Demo</p>
+              <button type="button" class="btn btn--green" data-start="Neuzulassung" data-paket="AllInclusive">Jetzt Zulassung starten</button>
+            </article>
+            <article class="price-card">
+              <h3>Abmeldung</h3>
+              <p class="price-card__sum">19,90 €</p>
+              <p>Außerbetriebsetzung · 15 Minuten in der Demo</p>
+              <button type="button" class="btn btn--green" data-start="Abmeldung">Jetzt KFZ abmelden</button>
+            </article>
+          </div>
+        </section>
+        <section>
+          <h2 class="section-title">Weitere Leistungen</h2>
+          <div class="service-grid">
+            <button type="button" class="service-card" data-start="Umschreibung"><strong>Umschreibung</strong><span>Halterwechsel, auch mit Kennzeichenübernahme</span><em>49,90 € · 15 Minuten</em></button>
+            <button type="button" class="service-card" data-start="Kurzzeitkennzeichen"><strong>Kurzzeitkennzeichen</strong><span>Fünf Tage für Überführung oder Probe</span><em>119,90 €</em></button>
+            <button type="button" class="service-card" data-start="Saisonkennzeichen"><strong>Saisonkennzeichen</strong><span>Nur in den Monaten, die du fährst</span><em>119,90 €</em></button>
+            <button type="button" class="service-card" data-start="Neuzulassung" data-paket="Normal"><strong>Normale Zulassung</strong><span>Ohne neue Schilder</span><em>119,90 €</em></button>
+          </div>
+        </section>
+        <section>
+          <h2 class="section-title">Oft gesuchte Unterscheidungszeichen</h2>
+          <div class="city-chips">
+            <button type="button" data-kreis="B">B · Berlin</button>
+            <button type="button" data-kreis="HH">HH · Hamburg</button>
+            <button type="button" data-kreis="K">K · Köln</button>
+            <button type="button" data-kreis="M">M · München</button>
+            <button type="button" data-kreis="F">F · Frankfurt</button>
+            <button type="button" data-kreis="DO">DO · Dortmund</button>
+          </div>
+        </section>
+        <section>
+          <h2 class="section-title">Häufige Fragen</h2>
+          <details class="faq"><summary>Ist das eine echte Zulassungsstelle?</summary><p>Nein. Mikail-Zulassung50 ist eine Demo. Es wird nichts bei einer Behörde eingereicht.</p></details>
+          <details class="faq"><summary>Wird wirklich bezahlt?</summary><p>Nein. PayPal, Klarna und Karte sind nur simuliert. Es wird nichts abgebucht.</p></details>
+          <details class="faq"><summary>Wie lange dauert es?</summary><p>Neuzulassung, Umschreibung und Abmeldung dauern in der Darstellung etwa 15 Minuten. Das Ausfüllen liegt bei ca. 10 Minuten.</p></details>
+          <details class="faq"><summary>Kommt ein Kennzeichen per Post?</summary><p>In der Demo nicht. Versand siehst du nur als Ablauf.</p></details>
+          <details class="faq"><summary>Was kostet der Service?</summary><p>Abmeldung und Kennzeichen reservieren je 19,90 €, Umschreibung 49,90 €, Kurzzeit- und Saisonkennzeichen sowie normale Zulassung 119,90 €, All-Inclusive mit Schildern 129,90 € brutto.</p></details>
+        </section>
+      </div>
+
+      <div id="auftrag-view" hidden>
+      <p class="demo-line">Demo · nichts wird eingereicht · Daten bleiben auf dem Gerät</p>
+      <h1 id="auftrag-title">Auftrag starten</h1>
+      <p class="lead" id="wizard-status">Schritt 1 von 7 — Vorgang</p>
+      <div class="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+      <ol class="steps" aria-hidden="true">
+        <li data-step="1" class="is-active">Vorgang</li>
+        <li data-step="2">Halter</li>
+        <li data-step="3">Fahrzeug</li>
+        <li data-step="4">Fotos</li>
+        <li data-step="5">Ident</li>
+        <li data-step="6">Zahlung</li>
+        <li data-step="7">Prüfen</li>
+      </ol>
+
+      <form id="auftrag-form" class="wizard" novalidate>
+        <fieldset data-panel="1">
+          <legend>Welchen Vorgang brauchst du?</legend>
+          <label class="choice">
+            <input type="radio" name="vorgang" value="Neuzulassung" required />
+            <span>Neuzulassung<small>Fahrzeug neu auf deinen Namen</small></span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="vorgang" value="Umschreibung" />
+            <span>Umschreibung / Halterwechsel<small>Besitzerwechsel, Kennzeichen behalten oder neu · 49,90 €</small></span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="vorgang" value="Abmeldung" />
+            <span>Abmeldung<small>Außerbetriebsetzung · 19,90 €</small></span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="vorgang" value="Kennzeichenreservierung" />
+            <span>Wunschkennzeichen reservieren<small>Nur Prüfung, noch keine Zulassung · 19,90 €</small></span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="vorgang" value="Kurzzeitkennzeichen" />
+            <span>Kurzzeitkennzeichen<small>Fünf Tage Überführung · 119,90 €</small></span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="vorgang" value="Saisonkennzeichen" />
+            <span>Saisonkennzeichen<small>Nur in gewählten Monaten · 119,90 €</small></span>
+          </label>
+          <div id="paket-wrap" hidden>
+            <p class="sublegend">Paket</p>
+            <p class="hint">Für Zulassungen: normal ohne neue Schilder oder All-Inclusive mit Schildern und allem drum und dran.</p>
+            <label class="choice">
+              <input type="radio" name="paket" value="Normal" />
+              <span>Normale Zulassung<small>Ohne neue Schilder · 119,90 € inkl. MwSt.</small></span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="paket" value="AllInclusive" />
+              <span>All-Inclusive-Zulassung<small>Mit Schildern, Fotos, Ident und Lieferung · 129,90 € inkl. MwSt.</small></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset data-panel="2" hidden>
+          <legend>Wer ist Halter?</legend>
+          <p class="hint">Wie in den Portalen: Person oder Firma, dann Anschrift für die Zulassungsstelle.</p>
+          <p class="sublegend">Halterart</p>
+          <label class="choice">
+            <input type="radio" name="halterart" value="Privat" />
+            <span>Privatperson<small>Zulassung auf deinen Namen</small></span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="halterart" value="Firma" />
+            <span>Firma<small>Zulassung auf das Unternehmen</small></span>
+          </label>
+          <label id="firma-wrap" hidden>Firmenname
+            <input name="firma" autocomplete="organization" />
+          </label>
+          <div class="field-grid">
+            <label>Vor- und Nachname
+              <input name="name" autocomplete="name" required />
+            </label>
+            <label>E-Mail
+              <input name="email" type="email" autocomplete="email" required />
+            </label>
+            <label>Telefon
+              <input name="telefon" type="tel" autocomplete="tel" placeholder="030 123456" />
+            </label>
+            <label>Straße und Hausnummer
+              <input name="anschrift" autocomplete="street-address" />
+            </label>
+            <label>Postleitzahl
+              <input name="plz" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="10115" required />
+            </label>
+            <label>Stadt
+              <input name="stadt" autocomplete="address-level2" placeholder="Berlin" required />
+            </label>
+          </div>
+          <input type="hidden" name="stelleName" id="stelleName" />
+          <input type="hidden" name="stelleOrt" id="stelleOrt" />
+          <div id="stelle-box" class="stelle-box" hidden>
+            <p class="stelle-box__kicker">Zuständige Zulassungsstelle</p>
+            <p><strong id="stelle-name"></strong></p>
+            <p class="hint" id="stelle-meta"></p>
+          </div>
+          <label>IBAN für Kfz-Steuer (optional)
+            <input name="iban" autocomplete="off" placeholder="DE89 3704 0044 0532 0130 00" />
+          </label>
+        </fieldset>
+
+        <fieldset data-panel="3" hidden>
+          <legend>Fahrzeug und Unterlagen</legend>
+          <p class="hint">Kennzeichen, eVB und die Liste, die zu diesem Vorgang gehört.</p>
+          <label id="kennzeichen-wrap">Aktuelles Kennzeichen
+            <input name="kennzeichen" class="plate-input" placeholder="B AB 1234" maxlength="12" />
+          </label>
+          <div id="wunsch-wrap">
+            <p class="sublegend">Wunschkennzeichen</p>
+            <input type="hidden" name="wunschkennzeichen" id="wunschkennzeichen" />
+            <div class="plate-widget" id="wish-plate">
+              <div class="de-plate">
+                <span class="de-plate__eu" aria-hidden="true"><b>D</b></span>
+                <div class="de-plate__row">
+                  <div class="de-field is-active" data-plate-field>
+                    <label class="sr-only" for="wish-kreis">Unterscheidungszeichen</label>
+                    <input id="wish-kreis" data-part="kreis" maxlength="3" placeholder="B" autocomplete="off" autocapitalize="characters" spellcheck="false" />
+                    <span class="de-pointer" aria-hidden="true"></span>
+                  </div>
+                  <div class="de-seals" aria-hidden="true"><i></i><i></i></div>
+                  <div class="de-field" data-plate-field>
+                    <label class="sr-only" for="wish-letters">Erkennungsbuchstaben</label>
+                    <input id="wish-letters" data-part="letters" maxlength="2" placeholder="AB" autocomplete="off" autocapitalize="characters" spellcheck="false" />
+                    <span class="de-pointer" aria-hidden="true"></span>
+                  </div>
+                  <div class="de-field de-field--num" data-plate-field>
+                    <label class="sr-only" for="wish-digits">Erkennungsnummer</label>
+                    <input id="wish-digits" data-part="digits" maxlength="4" placeholder="1234" inputmode="numeric" autocomplete="off" spellcheck="false" />
+                    <span class="de-pointer" aria-hidden="true"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p id="kennzeichen-check-row">
+            <button type="button" class="btn btn--check" id="btn-kennzeichen-check">Verfügbarkeit prüfen</button>
+          </p>
+          <p class="hint" id="kennzeichen-check-result" hidden></p>
+          <label id="saison-wrap" hidden>Saison (Monate)
+            <input name="saison" placeholder="z. B. 04–10" />
+          </label>
+          <label id="evb-wrap">eVB-Nummer
+            <input name="evb" placeholder="bei Zulassung / Umschreibung nötig" />
+          </label>
+          <label>FIN / VIN (optional)
+            <input name="vin" maxlength="17" />
+          </label>
+          <p class="sublegend">Unterlagen für diesen Vorgang</p>
+          <p class="hint" id="unterlagen-hint"></p>
+          <div id="unterlagen-list"></div>
+        </fieldset>
+
+        <fieldset data-panel="4" hidden>
+          <legend>Fotos mit Siegel</legend>
+          <p class="hint" id="foto-hint">Bitte jeweils so fotografieren, dass das Siegel gut zu erkennen ist.</p>
+          <div class="photo-list">
+            <article class="photo-card">
+              <p>Kennzeichen vorne mit Siegel</p>
+              <p class="photo-tip">Schild gerade, ganz im Rahmen, Siegel scharf. Kein Gegenlicht.</p>
+              <div class="photo-stage photo-stage--plate">
+                <span class="photo-frame" aria-hidden="true"></span>
+                <img alt="" hidden data-preview="kennzeichenVorne" />
+              </div>
+              <label class="btn btn--small"><span data-photo-label>Fotografieren</span>
+                <input class="sr-only" type="file" accept="image/*" capture="environment" data-photo="kennzeichenVorne" />
+              </label>
+              <div class="photo-checks" hidden data-checks="kennzeichenVorne">
+                <label class="check"><input type="checkbox" name="check_kennzeichenVorne_siegel" value="ja" /><span>Siegel ist zu erkennen</span></label>
+                <label class="check"><input type="checkbox" name="check_kennzeichenVorne_scharf" value="ja" /><span>Schrift ist lesbar</span></label>
+              </div>
+            </article>
+            <article class="photo-card">
+              <p>Kennzeichen hinten mit Siegel</p>
+              <p class="photo-tip">Wie vorne: Rahmen füllen, Siegel nicht abschneiden.</p>
+              <div class="photo-stage photo-stage--plate">
+                <span class="photo-frame" aria-hidden="true"></span>
+                <img alt="" hidden data-preview="kennzeichenHinten" />
+              </div>
+              <label class="btn btn--small"><span data-photo-label>Fotografieren</span>
+                <input class="sr-only" type="file" accept="image/*" capture="environment" data-photo="kennzeichenHinten" />
+              </label>
+              <div class="photo-checks" hidden data-checks="kennzeichenHinten">
+                <label class="check"><input type="checkbox" name="check_kennzeichenHinten_siegel" value="ja" /><span>Siegel ist zu erkennen</span></label>
+                <label class="check"><input type="checkbox" name="check_kennzeichenHinten_scharf" value="ja" /><span>Schrift ist lesbar</span></label>
+              </div>
+            </article>
+            <article class="photo-card">
+              <p>Zulassungsbescheinigung Teil I mit Siegel</p>
+              <p class="photo-tip">Dokument plan legen, Stempel/Siegel und FIN lesbar.</p>
+              <div class="photo-stage photo-stage--doc">
+                <span class="photo-frame" aria-hidden="true"></span>
+                <img alt="" hidden data-preview="zb1" />
+              </div>
+              <label class="btn btn--small"><span data-photo-label>Fotografieren</span>
+                <input class="sr-only" type="file" accept="image/*" capture="environment" data-photo="zb1" />
+              </label>
+              <div class="photo-checks" hidden data-checks="zb1">
+                <label class="check"><input type="checkbox" name="check_zb1_siegel" value="ja" /><span>Siegel ist zu erkennen</span></label>
+                <label class="check"><input type="checkbox" name="check_zb1_scharf" value="ja" /><span>Daten sind lesbar</span></label>
+              </div>
+            </article>
+          </div>
+        </fieldset>
+
+        <fieldset data-panel="5" hidden>
+          <legend>Foto-Ident-Verfahren</legend>
+          <p class="hint">Simuliertes Ident: Selfie und Ausweis. Kein echtes VideoIdent, keine Weiterleitung an einen Ident-Anbieter.</p>
+          <p class="sublegend">Welches Dokument fotografierst du?</p>
+          <label class="choice">
+            <input type="radio" name="ausweis" value="Personalausweis" />
+            <span>Personalausweis<small>Vorder- und Rückseite</small></span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="ausweis" value="Aufenthaltstitel" />
+            <span>Aufenthaltstitel<small>Karte oder Klebeetikett, beide Seiten</small></span>
+          </label>
+          <div class="photo-list">
+            <article class="photo-card">
+              <p>Gesicht (Selfie)</p>
+              <p class="photo-tip">Gesicht in den Kreis, gleichmäßig hell, ohne Sonnenbrille.</p>
+              <div class="photo-stage photo-stage--face">
+                <span class="photo-oval" aria-hidden="true"></span>
+                <img alt="" hidden data-preview="selfie" />
+              </div>
+              <label class="btn btn--small"><span data-photo-label>Fotografieren</span>
+                <input class="sr-only" type="file" accept="image/*" capture="user" data-photo="selfie" />
+              </label>
+            </article>
+            <article class="photo-card">
+              <p id="ident-front-label">Ausweis Vorderseite</p>
+              <p class="photo-tip">Ausweis plan, alle Ecken im Rahmen.</p>
+              <div class="photo-stage photo-stage--doc">
+                <span class="photo-frame" aria-hidden="true"></span>
+                <img alt="" hidden data-preview="ausweisVorn" />
+              </div>
+              <label class="btn btn--small"><span data-photo-label>Fotografieren</span>
+                <input class="sr-only" type="file" accept="image/*" capture="environment" data-photo="ausweisVorn" />
+              </label>
+            </article>
+            <article class="photo-card">
+              <p id="ident-back-label">Ausweis Rückseite</p>
+              <p class="photo-tip">Rückseite vollständig, ohne Spiegelung.</p>
+              <div class="photo-stage photo-stage--doc">
+                <span class="photo-frame" aria-hidden="true"></span>
+                <img alt="" hidden data-preview="ausweisHinten" />
+              </div>
+              <label class="btn btn--small"><span data-photo-label>Fotografieren</span>
+                <input class="sr-only" type="file" accept="image/*" capture="environment" data-photo="ausweisHinten" />
+              </label>
+            </article>
+          </div>
+          <label class="check">
+            <input type="checkbox" name="identDemo" value="ja" />
+            <span>Ident-Abgleich in der Demo bestätigt</span>
+          </label>
+        </fieldset>
+
+        <fieldset data-panel="6" hidden>
+          <legend>Lieferung und Zahlung</legend>
+          <p class="hint">Wie bei den Portalen: erst Weg der Schilder, dann Zahlart. Nichts wird gebucht oder abgebucht.</p>
+          <p class="sublegend">Abholung oder Versand</p>
+          <label class="choice">
+            <input type="radio" name="lieferung" value="Abholung" />
+            <span>Abholung an der Zulassungsstelle<small>Kein Versand, du holst die Schilder selbst</small></span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="lieferung" value="Versand" />
+            <span>Versand nach Hause<small>Standard, 1–3 Werktage in der Darstellung</small></span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="lieferung" value="Express" />
+            <span>Expressversand<small>Schneller Weg, in der Demo ohne Aufpreis</small></span>
+          </label>
+          <div id="versand-felder" hidden>
+            <label>Straße und Hausnummer
+              <input name="strasse" autocomplete="street-address" />
+            </label>
+            <label>Wunschtermin (optional)
+              <input name="termin" type="date" />
+            </label>
+          </div>
+          <p class="hint" id="liefer-hint">In der Demo wird nichts verschickt und kein Termin bei der Behörde gebucht.</p>
+          <p class="sublegend" id="zahlung-legend">Zahlung</p>
+          <div class="price-box" id="price-box-pay">
+            <p class="price-box__title">Servicegebühr</p>
+            <dl>
+              <div><dt>Netto</dt><dd data-price-net>109,16 €</dd></div>
+              <div><dt>zzgl. 19 % MwSt.</dt><dd data-price-vat>20,74 €</dd></div>
+              <div class="is-total"><dt>Gesamt brutto</dt><dd data-price-gross>129,90 €</dd></div>
+            </dl>
+            <p class="hint">Servicegebühr inkl. Fotos und Foto-Ident. Behördengebühren nicht enthalten. In der Demo wird nichts abgebucht.</p>
+          </div>
+          <label class="choice">
+            <input type="radio" name="zahlung" value="PayPal" />
+            <span>PayPal<small>Weiterleitung wird nur simuliert</small></span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="zahlung" value="Kreditkarte" />
+            <span>Kreditkarte<small>Visa, Mastercard · CVC wird nicht gespeichert</small></span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="zahlung" value="Überweisung" />
+            <span>Überweisung<small>Vorgemerkt, kein echter Transfer</small></span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="zahlung" value="Klarna" />
+            <span>Klarna<small>Kauf auf Rechnung, nur Demo</small></span>
+          </label>
+          <div id="karten-felder" hidden>
+            <p class="sublegend">Kreditkartendaten</p>
+            <div class="field-grid">
+            <label>Vorname
+              <input name="kartenVorname" autocomplete="cc-given-name" />
+            </label>
+            <label>Nachname
+              <input name="kartenNachname" autocomplete="cc-family-name" />
+            </label>
+            <label>E-Mail
+              <input name="kartenEmail" type="email" autocomplete="email" />
+            </label>
+            <label>Kreditkartennummer
+              <input
+                name="kartennummer"
+                class="card-input"
+                inputmode="numeric"
+                autocomplete="cc-number"
+                maxlength="19"
+                placeholder="ACCT-000015"
+              />
+            </label>
+            </div>
+            <div class="card-row">
+              <label>Ablaufdatum
+                <input
+                  name="kartenAblauf"
+                  inputmode="numeric"
+                  autocomplete="cc-exp"
+                  maxlength="5"
+                  placeholder="MM/JJ"
+                />
+              </label>
+              <label>Kreditkartencode (CVC)
+                <input
+                  name="kartencode"
+                  inputmode="numeric"
+                  autocomplete="cc-csc"
+                  maxlength="4"
+                  placeholder="123"
+                />
+              </label>
+            </div>
+          </div>
+          <p class="hint">Zahlung nur simuliert: PayPal, Klarna und Karte buchen nichts ab. Kartendaten bleiben auf dem Gerät, der CVC wird nicht gespeichert.</p>
+        </fieldset>
+
+        <fieldset data-panel="7" hidden>
+          <legend>Zusammenfassung</legend>
+          <div id="summary" class="summary"></div>
+          <p class="hint">Nichts wird an eine Behörde gesendet. Der Auftrag bleibt auf diesem Gerät.</p>
+        </fieldset>
+
+        <p class="form-error" id="form-error" hidden></p>
+        <div class="wizard__nav">
+          <button type="button" class="btn btn--ghost" id="btn-back" hidden>Zurück</button>
+          <button type="button" class="btn btn--green" id="btn-next">Weiter</button>
+        </div>
+      </form>
+
+      <div id="done" class="done" hidden>
+        <h2>Auftrag gespeichert</h2>
+        <p id="done-text"></p>
+        <ol class="status-list" id="status-list"></ol>
+        <p class="hint">Demo-Status. Es wird nichts an eine Behörde oder ein Versandunternehmen übergeben.</p>
+        <button type="button" class="btn btn--green" id="btn-reset">Neuen Auftrag</button>
+      </div>
+      </div>
+      <div id="pay-overlay" class="overlay" hidden>
+        <p><strong id="pay-overlay-title">Zahlung wird vorbereitet</strong></p>
+        <p class="hint">Demo — es wird nichts abgebucht.</p>
+      </div>
+
+      <section id="preisliste-view" hidden>
+        <h1>Preisliste</h1>
+        <article class="legal">
+          <p class="price-box__title">Servicegebühren inkl. 19 % MwSt.</p>
+          <dl class="price-list">
+            <div><dt>Kennzeichen reservieren</dt><dd>19,90 €</dd></div>
+            <div><dt>Abmeldung</dt><dd>19,90 €</dd></div>
+            <div><dt>Umschreibung</dt><dd>49,90 €</dd></div>
+            <div><dt>Kurzzeitkennzeichen</dt><dd>119,90 €</dd></div>
+            <div><dt>Saisonkennzeichen</dt><dd>119,90 €</dd></div>
+            <div><dt>Normale Zulassung</dt><dd>119,90 €</dd></div>
+            <div class="is-total"><dt>All-Inclusive mit Schildern</dt><dd>129,90 €</dd></div>
+          </dl>
+          <p>
+            All-Inclusive gilt für die Neuzulassung
+            inklusive Schilder, Fotos und Foto-Ident. Die normale Zulassung ist
+            ohne neue Schilder. Kurzzeit, Saison und Umschreibung haben eigene Preise.
+            Behördengebühren sind nicht enthalten.
+            In der Demo wird nichts abgebucht.
+          </p>
+        </article>
+        <p>
+          <button type="button" class="btn btn--green" data-back-app>Zurück zur App</button>
+        </p>
+      </section>
+
+      <section id="impressum-view" hidden>
+        <h1>Impressum</h1>
+        <article class="legal">
+          <p class="hint">Angaben gemäß § 5 TMG</p>
+          <p>
+            <strong data-cfg="owner">Mikail Seyhan</strong><br />
+            Verantwortlicher Anbieter von <span data-cfg="brand">Mikail-Zulassung50</span>
+          </p>
+          <p class="hint" id="impressum-adresse">Anschrift und Telefon in config.js eintragen.</p>
+          <h2>Kontakt</h2>
+          <p id="impressum-kontakt">Mikail Seyhan · über das Kontaktformular in dieser App</p>
+          <h2>Hinweis</h2>
+          <p>
+            Diese Anwendung ist eine Demo und kein amtlicher Zulassungsdienst.
+            Es werden keine Vorgänge bei einer Behörde eingereicht. Fotos und
+            Formulardaten bleiben auf diesem Gerät.
+          </p>
+          <h2>Haftung für Inhalte</h2>
+          <p>
+            Als Diensteanbieter ist Mikail Seyhan für eigene Inhalte dieser App
+            nach den allgemeinen Gesetzen verantwortlich. Für die Richtigkeit
+            behördlicher Informationen und für die Durchführung von
+            Zulassungsvorgängen wird keine Gewähr übernommen.
+          </p>
+        </article>
+        <p>
+          <button type="button" class="btn btn--green" data-back-app>Zurück zur App</button>
+        </p>
+      </section>
+
+      <section id="agb-view" hidden>
+        <h1>AGB</h1>
+        <article class="legal">
+          <p class="hint">Allgemeine Geschäftsbedingungen · Demo</p>
+          <h2>1. Geltungsbereich</h2>
+          <p>Diese App ist eine Demonstration von Mikail-Zulassung50. Es kommt kein Vertrag über eine echte Zulassungsdienstleistung zustande.</p>
+          <h2>2. Leistung</h2>
+          <p>Du kannst einen Musterauftrag mit Fotos, Ident und Zahlung erfassen. Es erfolgt keine Einreichung bei einer Zulassungsbehörde und kein Versand von Kennzeichen.</p>
+          <h2>3. Preis</h2>
+          <p>Angezeigte Preise inkl. MwSt. (Abmeldung und Reservierung 19,90 €, Umschreibung 49,90 €, Kurzzeit- und Saisonkennzeichen sowie normale Zulassung 119,90 €, All-Inclusive 129,90 €) dienen der Darstellung. Es wird nichts abgebucht.</p>
+          <h2>4. Widerruf</h2>
+          <p>Weil kein echter Vertrag zustande kommt, gibt es nichts zu widerrufen und kein Entgelt.</p>
+          <h2>5. Haftung</h2>
+          <p>Für Demo-Inhalte und geschätzte Zulassungsstellen wird keine Gewähr übernommen.</p>
+        </article>
+        <p><button type="button" class="btn btn--green" data-back-app>Zurück zur App</button></p>
+      </section>
+
+      <section id="datenschutz-view" hidden>
+        <h1>Datenschutz</h1>
+        <article class="legal">
+          <p class="hint">Datenschutzhinweis · Demo</p>
+          <h2>Verantwortlicher</h2>
+          <p id="datenschutz-verantwortlicher">Mikail Seyhan, Anbieter von Mikail-Zulassung50.</p>
+          <h2>Welche Daten?</h2>
+          <p>Auftragsdaten, Fotos und Zahlungsangaben bleiben in der Regel auf diesem Gerät (localStorage). Es gibt keine Übermittlung an uns, an Zahlungsanbieter oder an eine Behörde.</p>
+          <h2>Kreditkarte</h2>
+          <p>Der Sicherheitscode (CVC) wird nicht gespeichert. Die Kartennummer wird nur mit den letzten vier Stellen gemerkt.</p>
+          <h2>Cookies</h2>
+          <p>Es gibt kein Tracking. Es werden keine Marketing-Cookies gesetzt.</p>
+          <h2>Rechte</h2>
+          <p>Du kannst Daten jederzeit über „Neuen Auftrag“ oder durch Löschen der Website-Daten im Browser entfernen.</p>
+        </article>
+        <p><button type="button" class="btn btn--green" data-back-app>Zurück zur App</button></p>
+      </section>
+
+      <section id="kontakt-view" hidden>
+        <h1>Kontakt</h1>
+        <article class="legal">
+          <p id="kontakt-kopf">Mikail Seyhan · Mikail-Zulassung50</p>
+          <p class="hint" id="kontakt-hinweis">Nachrichten bleiben auf diesem Gerät. Es geht keine E-Mail raus.</p>
+          <form id="kontakt-form">
+            <label>Dein Name
+              <input name="kontaktName" autocomplete="name" />
+            </label>
+            <label>Nachricht
+              <textarea name="kontaktText" rows="4"></textarea>
+            </label>
+            <button type="submit" class="btn btn--green">Nachricht speichern</button>
+          </form>
+          <p class="hint" id="kontakt-ok" hidden>Gespeichert (Demo).</p>
+        </article>
+        <p><button type="button" class="btn btn--green" data-back-app>Zurück zur App</button></p>
+      </section>
+
+    </main>
+    <footer class="site-footer">
+      <div class="wrap footer-links">
+        <button type="button" class="linkish" data-page="preisliste">Preisliste</button>
+        <button type="button" class="linkish" data-page="agb">AGB</button>
+        <button type="button" class="linkish" data-page="datenschutz">Datenschutz</button>
+        <button type="button" class="linkish" data-page="kontakt">Kontakt</button>
+        <button type="button" class="linkish" data-page="impressum">Impressum</button>
+      </div>
+      <p class="footer-copy">© 2026 Mikail Seyhan · Mikail-Zulassung50</p>
+    </footer>
+    <script src="config.js"></script>
+    <script src="app.js?v=plate1"></script>
+  </body>
+</html>
